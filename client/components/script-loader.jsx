@@ -6,7 +6,7 @@ const libraries = ['places'];
 
 export default function Script() {
   const { isLoaded } = useLoadScript({
-    googleMapsApiKey: 'AIzaSyDysHyCDjBRtu-50_S-8fnAedcD8_2V-0Y',
+    googleMapsApiKey: process.env.GOOGLE_API_KEY,
     libraries
   });
 

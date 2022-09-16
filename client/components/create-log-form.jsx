@@ -59,98 +59,96 @@ class CreateLogForm extends React.Component {
 
   render() {
     return (
-      <>
-        <div className='container'>
-          <div className='text-center'>
-            <h1>Add a Ride Log</h1>
-          </div>
-          <div className='create-log-wrapper'>
-            <div>
-              <h3>Upload a Photo</h3>
-            </div>
-            <div className='text-right'>
-              <label htmlFor="file" className='row nowrap'>
-                <input
-                  className='choose-file'
-                  type="file"
-                  name="image"
-                  ref={this.fileInputRef}
-                  accept=".png, .jpg, .jpeg, .gif" />
-              </label>
-            </div>
-            <div>
-              <h3>Search Location / Trail</h3>
-            </div>
-            <PlacesAutocomplete
-              value={this.state.location}
-              onChange={this.handleLocationChange}
-              onSelect={this.handleSelect}
-            >
-              {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-                <div>
-                  <input
-                    {...getInputProps({
-                      placeholder: 'Add Location / Trail ...',
-                      className: 'location-search-input'
-                    })}
-                  />
-                  <div className="autocomplete-dropdown-container">
-                    {loading && <div>Loading...</div>}
-                    {suggestions.map((suggestion, index) => {
-                      const className = suggestion.active
-                        ? 'suggestion-item--active'
-                        : 'suggestion-item';
-                      const style = suggestion.active
-                        ? { cursor: 'pointer', backgroundColor: '#ffffff' }
-                        : {
-                            backgroundColor: '#ffffff',
-                            cursor: 'pointer',
-                            border: '0.5px solid black'
-                          };
-                      return (
-                        <div
-                          {...getSuggestionItemProps(suggestion, {
-                            className,
-                            style
-                          })}
-                          key={index}
-                        >
-                          <span>{suggestion.description}</span>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-              )}
-            </PlacesAutocomplete>
-            <div>
-              <h3>Add Visited Date</h3>
-            </div>
-            <input
-              onChange={this.handleChange}
-              value={this.state.date}
-              name='date'
-              className='text-box date'
-              type="date"
-              placeholder='Month / Day / Year' />
-            <div>
-              <h3>Add Caption / Comment</h3>
-            </div>
-            <textarea
-              name="caption"
-              onChange={this.handleChange}
-              value={this.state.caption}
-              id="caption"
-              cols="30"
-              rows="8"
-              placeholder='Write your message here'>
-            </textarea>
-          </div>
-          <div className='text-center'>
-            <input onClick={this.addLog} className='submit-button' type="submit" />
-          </div>
+      <div className='container'>
+        <div className='text-center'>
+          <h1>Add a Ride Log</h1>
         </div>
-      </>
+        <div className='create-log-wrapper'>
+          <div>
+            <h3>Upload a Photo</h3>
+          </div>
+          <div className='text-right'>
+            <label htmlFor="file" className='row nowrap'>
+              <input
+                className='choose-file'
+                type="file"
+                name="image"
+                ref={this.fileInputRef}
+                accept=".png, .jpg, .jpeg, .gif" />
+            </label>
+          </div>
+          <div>
+            <h3>Search Location / Trail</h3>
+          </div>
+          <PlacesAutocomplete
+            value={this.state.location}
+            onChange={this.handleLocationChange}
+            onSelect={this.handleSelect}
+          >
+            {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+              <div>
+                <input
+                  {...getInputProps({
+                    placeholder: 'Add Location / Trail ...',
+                    className: 'location-search-input'
+                  })}
+                />
+                <div className="autocomplete-dropdown-container">
+                  {loading && <div>Loading...</div>}
+                  {suggestions.map((suggestion, index) => {
+                    const className = suggestion.active
+                      ? 'suggestion-item--active'
+                      : 'suggestion-item';
+                    const style = suggestion.active
+                      ? { cursor: 'pointer', backgroundColor: '#ffffff' }
+                      : {
+                          backgroundColor: '#ffffff',
+                          cursor: 'pointer',
+                          border: '0.5px solid black'
+                        };
+                    return (
+                      <div
+                        {...getSuggestionItemProps(suggestion, {
+                          className,
+                          style
+                        })}
+                        key={index}
+                      >
+                        <span>{suggestion.description}</span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+          </PlacesAutocomplete>
+          <div>
+            <h3>Add Visited Date</h3>
+          </div>
+          <input
+            onChange={this.handleChange}
+            value={this.state.date}
+            name='date'
+            className='text-box date'
+            type="date"
+            placeholder='Month / Day / Year' />
+          <div>
+            <h3>Add Caption / Comment</h3>
+          </div>
+          <textarea
+            name="caption"
+            onChange={this.handleChange}
+            value={this.state.caption}
+            id="caption"
+            cols="30"
+            rows="8"
+            placeholder='Write your message here'>
+          </textarea>
+        </div>
+        <div className='text-center'>
+          <input onClick={this.addLog} className='submit-button' type="submit" />
+        </div>
+      </div>
     );
   }
 }

@@ -3,7 +3,6 @@ import React from 'react';
 export default class LogSuccesful extends React.Component {
   render() {
     return (
-      <>
       <div className='container'>
         <div className='success-message' >
           <div className='row justify-center'>
@@ -19,9 +18,6 @@ export default class LogSuccesful extends React.Component {
           </div>
         </div>
       </div>
-      </>
     );
   }
-
-  s;
 }
