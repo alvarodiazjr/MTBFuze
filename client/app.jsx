@@ -22,7 +22,7 @@ export default class App extends React.Component {
 
   renderPage() {
     const { path } = this.state.route;
-    if (path === 'createlog') {
+    if (path === 'createlog' || path === '') {
       return <Script />;
     }
     if (path === 'logsuccess') {

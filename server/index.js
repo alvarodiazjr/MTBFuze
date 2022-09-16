@@ -48,18 +48,18 @@ app.get('/api/rideLogs', (req, res, next) => {
 });
 
 app.post('/api/ridelogs', uploadsMiddleware, (req, res, next) => {
-  const { location, date, caption } = req.body;
+  const { location, date, caption, lat, lng } = req.body;
   if (!location || !date || !caption) {
     throw new ClientError(400, 'Missing Fields');
   }
   const userId = '1';
   const photoUrl = path.join('/images', req.file.filename);
   const sql = `
-    insert into "rideLogs" ("userId", "location", "visitedOn", "caption", "photoUrl")
-    values ($1, $2, $3, $4, $5)
+    insert into "rideLogs" ("userId", "location", "visitedOn", "caption", "photoUrl", "lat", "lng")
+    values ($1, $2, $3, $4, $5, $6, $7)
     returning *
   `;
-  const params = [userId, location, date, caption, photoUrl];
+  const params = [userId, location, date, caption, photoUrl, lat, lng];
   db.query(sql, params)
     .then(result => {
       const [log] = result.rows;
