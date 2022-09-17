@@ -13,6 +13,7 @@ header {
 }
 
 .nav-text {
+  cursor: pointer;
   color: white;
   text-shadow:
     -1px 1px 2px #000,
@@ -122,4 +123,26 @@ input[type="file"] {
 .log-anchor {
   cursor: pointer;
   color: #000;
+}
+
+.accordion {
+  margin-top: 2rem;
+}
+
+.blocks {
+  font-size: 1.5rem;
+  padding: 10px 15px;
+  border: 1.5px solid black;
+  border-radius: 5px;
+}
+
+.header {
+  width: 100%;
+  font-size: 2rem;
+  cursor: pointer;
+  background-color: lightgrey;
+}
+
+.map {
+  margin-top: 2rem;
 }

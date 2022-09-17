@@ -1,12 +1,16 @@
 import React from 'react';
 
 export default class Navbar extends React.Component {
+  mtbClick() {
+    window.location.hash = '';
+  }
+
   render() {
     return (
       <header>
         <div className='row container align-center'>
           <div className='column-half mtb-logo'>
-            <h1 className='nav-text'>MTB</h1>
+            <h1 onClick={this.mtbClick} className='nav-text'>MTB</h1>
             <img className='mtb-image' src="./images/image-1663262324156.png" alt="mtb" />
           </div>
           <div className='column-half text-right'>

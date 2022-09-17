@@ -3,6 +3,7 @@ import Navbar from './components/navbar';
 import LogSuccesful from './components/succesful-log';
 import parseRoute from './lib/parse-route';
 import Script from './components/script-loader';
+import ProfilePage from './pages/profile-page';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -27,6 +28,9 @@ export default class App extends React.Component {
     }
     if (path === 'logsuccess') {
       return <LogSuccesful />;
+    }
+    if (path === 'profile') {
+      return <ProfilePage />;
     }
   }
 

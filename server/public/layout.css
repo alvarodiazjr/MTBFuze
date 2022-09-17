@@ -8,6 +8,10 @@
   display: flex;
 }
 
+.block {
+  display: block;
+}
+
 .column-half {
   flex-basis: 50%;
 }
