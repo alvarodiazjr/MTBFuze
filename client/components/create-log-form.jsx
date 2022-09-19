@@ -9,7 +9,8 @@ class CreateLogForm extends React.Component {
     super(props);
     this.state = {
       location: '',
-      latlng: '',
+      lat: '',
+      lng: '',
       date: '',
       caption: ''
     };
@@ -29,6 +30,8 @@ class CreateLogForm extends React.Component {
     formData.append('date', this.state.date);
     formData.append('caption', this.state.caption);
     formData.append('image', this.fileInputRef.current.files[0]);
+    formData.append('lat', this.state.lat);
+    formData.append('lng', this.state.lng);
     const req = {
       method: 'POST',
       body: formData
@@ -37,7 +40,7 @@ class CreateLogForm extends React.Component {
       .then(res => res.json())
       .then(result => {
         window.location.hash = 'logsuccess';
-        this.setState({ location: '', date: '', caption: '' });
+        this.setState({ location: '', date: '', caption: '', lat: '', lng: '' });
         this.fileInputRef.current.value = null;
       })
       .catch(err => console.error(err));
@@ -52,7 +55,10 @@ class CreateLogForm extends React.Component {
       .then(results => getLatLng(results[0]))
       .then(latLng => {
         this.setState({ location });
-        this.setState({ latlng: latLng });
+        this.setState({
+          lat: latLng.lat,
+          lng: latLng.lng
+        });
       })
       .catch(error => console.error('Error', error));
   };

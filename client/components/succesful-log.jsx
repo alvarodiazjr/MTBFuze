@@ -13,7 +13,7 @@ export default class LogSuccesful extends React.Component {
               <a className='log-anchor' href="#createlog">Create Another</a>
             </div>
             <div className='column-half success-log'>
-              <button className='view-logs-btn'>View Logs</button>
+              <a href="#profile" className='view-logs-btn'>View Logs</a>
             </div>
           </div>
         </div>
