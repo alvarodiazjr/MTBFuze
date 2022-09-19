@@ -13,6 +13,7 @@ header {
 }
 
 .nav-text {
+  text-decoration: none;
   cursor: pointer;
   color: white;
   text-shadow:
@@ -76,6 +77,8 @@ header {
 }
 
 .view-logs-btn {
+  text-decoration: none;
+  padding: 0.5rem;
   font-size: 18px;
   margin: 0;
 }

@@ -1,10 +1,6 @@
 import React from 'react';
 
 export default class LogSuccesful extends React.Component {
-  handleChange() {
-    window.location.hash = 'profile';
-  }
-
   render() {
     return (
       <div className='container'>
@@ -17,7 +13,7 @@ export default class LogSuccesful extends React.Component {
               <a className='log-anchor' href="#createlog">Create Another</a>
             </div>
             <div className='column-half success-log'>
-              <button onClick={this.handleChange} className='view-logs-btn'>View Logs</button>
+              <a href="#profile" className='view-logs-btn'>View Logs</a>
             </div>
           </div>
         </div>
