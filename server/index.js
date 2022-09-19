@@ -35,9 +35,13 @@ app.get('/api/users', (req, res, next) => {
     .catch(err => next(err));
 });
 
-app.get('/api/rideLogs', (req, res, next) => {
+app.get('/api/ridelogs', (req, res, next) => {
   const sql = `
-    select *
+    select "logId",
+           "photoUrl",
+           "location",
+           "caption",
+           "visitedOn"
       from "rideLogs"
   `;
   db.query(sql)

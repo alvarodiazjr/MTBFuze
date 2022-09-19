@@ -146,6 +146,12 @@ input[type="file"] {
   background-color: lightgrey;
 }
 
+.content {
+  width: 100%;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
 .profile-content {
   margin: 1rem;
 }
