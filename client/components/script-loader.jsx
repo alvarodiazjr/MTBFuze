@@ -1,6 +1,6 @@
 import React from 'react';
-import CreateLogForm from './create-log-form';
 import { useLoadScript } from '@react-google-maps/api';
+import Home from '../pages/home';
 
 const libraries = ['places'];
 
@@ -14,6 +14,6 @@ export default function Script() {
   if (!isLoaded) {
     return <div>...loading</div>;
   } else {
-    return <CreateLogForm />;
+    return <Home />;
   }
 }

@@ -29,28 +29,28 @@ export default class ProfilePage extends React.Component {
     };
 
     return (
-      <div className="container accordion">
-        <h1>alvarodiazjr</h1>
-        <div>
-          <div className="row">
+      <div className="container">
+        <h1 className='profile-content'>alvarodiazjr</h1>
+        <div className='profile-page'>
+          <div className='profile-content'>
             <div className="blocks header">My Bikes</div>
-          </div>
-          <div className="row">
             <div className="blocks header">My Rides</div>
           </div>
-          <div className="row map">
-            <GoogleMap
-              mapContainerStyle={containerStyle}
-              center={center}
-              zoom={3}
-            >
-              {this.state.latLng.map(marker => (
-                <Marker
-                  position={{ lat: marker.lat, lng: marker.lng }}
-                  key={marker.logId}
-                />
-              ))}
-            </GoogleMap>
+          <div className='profile-content'>
+            <div className="row">
+              <GoogleMap
+                mapContainerStyle={containerStyle}
+                center={center}
+                zoom={3}
+              >
+                {this.state.latLng.map(marker => (
+                  <Marker
+                    position={{ lat: marker.lat, lng: marker.lng }}
+                    key={marker.logId}
+                  />
+                ))}
+              </GoogleMap>
+            </div>
           </div>
         </div>
       </div>

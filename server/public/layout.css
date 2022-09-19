@@ -16,6 +16,10 @@
   flex-basis: 50%;
 }
 
+.column-full {
+  flex-basis: 100%;
+}
+
 .align-center {
   align-items: center;
 }
@@ -37,5 +41,14 @@
     max-width: 1000px;
     margin: 0 auto;
     padding: 0 1.5rem;
+  }
+
+  .profile-page {
+    display: flex;
+  }
+
+  .profile-content {
+    flex-basis: 50%;
+    margin: 1rem;
   }
 }
