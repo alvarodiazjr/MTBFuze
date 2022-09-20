@@ -4,6 +4,7 @@ import LogSuccesful from '../components/succesful-log';
 import parseRoute from '../lib/parse-route';
 import ProfilePage from './profile-page';
 import CreateLogForm from '../components/create-log-form';
+import FullLog from '../components/full-log';
 
 export default class Home extends React.Component {
   constructor(props) {
@@ -31,6 +32,10 @@ export default class Home extends React.Component {
     }
     if (path === 'profile') {
       return <ProfilePage />;
+    }
+    if (path === 'fulllog') {
+      const logId = this.state.route.params.get('logId');
+      return <FullLog logId={logId} />;
     }
   }
 

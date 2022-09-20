@@ -48,18 +48,6 @@ export default class ProfilePage extends React.Component {
       lng: -95
     };
 
-    const locations = this.state.rideLogs.map(rideLogs => {
-      let display = '';
-      if (this.state.isClicked === 'rides') {
-        display += 'visible';
-      } else {
-        display += 'hidden';
-      }
-      return (
-        <div key={rideLogs.logId} className={`blocks content ${display}`}>{rideLogs.location}</div>
-      );
-    });
-
     return (
       <div className="container">
         <h1 className='profile-content'>alvarodiazjr</h1>
@@ -67,7 +55,21 @@ export default class ProfilePage extends React.Component {
           <div className='profile-content'>
             <div onClick={this.tabClick} id='bikes' className="blocks header">My Bikes</div>
             <div onClick={this.tabClick} id='rides' className="blocks header">My Rides</div>
-            {locations}
+            {
+              this.state.rideLogs.map(rideLogs => {
+                let display = '';
+                if (this.state.isClicked === 'rides') {
+                  display += 'visible';
+                } else {
+                  display += 'hidden';
+                }
+                return (
+                  <div key={rideLogs.logId}>
+                    <FullLog rideLogs={rideLogs} display={display}/>
+                  </div>
+                );
+              })
+            }
           </div>
           <div className='profile-content'>
             <div className="row">
@@ -89,4 +91,15 @@ export default class ProfilePage extends React.Component {
       </div>
     );
   }
+}
+
+function FullLog(props) {
+  // eslint-disable-next-line no-unused-vars
+  const { logId, photoUrl, location, caption, visitedOn } = props.rideLogs;
+  const display = props.display;
+  return (
+    <a className='locations' key={logId} href={`#fulllog?logId=${logId}`}>
+      <div className={`blocks content ${display}`}>{location}</div>
+    </a>
+  );
 }

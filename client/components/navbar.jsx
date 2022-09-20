@@ -3,7 +3,7 @@ import React from 'react';
 export default class Navbar extends React.Component {
   render() {
     return (
-      <header>
+      <header className='navbar'>
         <div className='row container align-center'>
           <div className='column-half mtb-logo'>
             <a href="#" className='nav-text'>

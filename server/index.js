@@ -86,6 +86,31 @@ app.get('/api/coords', (req, res, next) => {
     .catch(err => next(err));
 });
 
+app.get('/api/ridelog/:logId', (req, res, next) => {
+  const logId = Number(req.params.logId);
+  if (!logId) {
+    throw new ClientError(400, 'productId must be a positive integer');
+  }
+  const sql = `
+    select "logId",
+           "photoUrl",
+           "location",
+           "caption",
+           "visitedOn"
+      from "rideLogs"
+      where "logId" = $1
+  `;
+  const params = [logId];
+  db.query(sql, params)
+    .then(result => {
+      if (!result.rows[0]) {
+        throw new ClientError(404, `cannot find ride with logId ${logId}`);
+      }
+      res.json(result.rows[0]);
+    })
+    .catch(err => next(err));
+});
+
 app.use(errorMiddleware);
 
 app.listen(process.env.PORT, () => {

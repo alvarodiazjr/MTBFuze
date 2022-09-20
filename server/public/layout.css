@@ -47,11 +47,13 @@
     padding: 0 1.5rem;
   }
 
-  .profile-page {
+  .profile-page,
+  .log-page {
     display: flex;
   }
 
-  .profile-content {
+  .profile-content,
+  .log-content {
     flex-basis: 50%;
     margin: 1rem;
   }
