@@ -19,10 +19,6 @@ app.use(express.json());
 
 app.use(staticMiddleware);
 
-app.get('/api/hello', (req, res) => {
-  res.json({ hello: 'world' });
-});
-
 app.get('/api/users', (req, res, next) => {
   const sql = `
     select *
@@ -35,9 +31,13 @@ app.get('/api/users', (req, res, next) => {
     .catch(err => next(err));
 });
 
-app.get('/api/rideLogs', (req, res, next) => {
+app.get('/api/ridelogs', (req, res, next) => {
   const sql = `
-    select *
+    select "logId",
+           "photoUrl",
+           "location",
+           "caption",
+           "visitedOn"
       from "rideLogs"
   `;
   db.query(sql)
@@ -78,6 +78,31 @@ app.get('/api/coords', (req, res, next) => {
   db.query(sql)
     .then(result => {
       res.json(result.rows);
+    })
+    .catch(err => next(err));
+});
+
+app.get('/api/ridelog/:logId', (req, res, next) => {
+  const logId = Number(req.params.logId);
+  if (!logId) {
+    throw new ClientError(400, 'productId must be a positive integer');
+  }
+  const sql = `
+    select "logId",
+           "photoUrl",
+           "location",
+           "caption",
+           "visitedOn"
+      from "rideLogs"
+      where "logId" = $1
+  `;
+  const params = [logId];
+  db.query(sql, params)
+    .then(result => {
+      if (!result.rows[0]) {
+        throw new ClientError(404, `cannot find ride with logId ${logId}`);
+      }
+      res.json(result.rows[0]);
     })
     .catch(err => next(err));
 });
