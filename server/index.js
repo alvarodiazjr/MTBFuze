@@ -107,6 +107,26 @@ app.get('/api/ridelog/:logId', (req, res, next) => {
     .catch(err => next(err));
 });
 
+app.post('/api/addbike', (req, res, next) => {
+  const { make, model, year } = req.body;
+  if (!make || !model || !year) {
+    throw new ClientError(400, 'Missing Fields');
+  }
+  const userId = '1';
+  const sql = `
+    insert into "bikeInfo" ("userId", "make", "model", "year")
+    values ($1, $2, $3, $4)
+    returning *
+  `;
+  const params = [userId, make, model, year];
+  db.query(sql, params)
+    .then(result => {
+      const [log] = result.rows;
+      res.status(201).json(log);
+    })
+    .catch(err => next(err));
+});
+
 app.use(errorMiddleware);
 
 app.listen(process.env.PORT, () => {
