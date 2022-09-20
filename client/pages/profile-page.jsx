@@ -94,8 +94,7 @@ export default class ProfilePage extends React.Component {
 }
 
 function FullLog(props) {
-  // eslint-disable-next-line no-unused-vars
-  const { logId, photoUrl, location, caption, visitedOn } = props.rideLogs;
+  const { logId, location } = props.rideLogs;
   const display = props.display;
   return (
     <a className='locations' key={logId} href={`#fulllog?logId=${logId}`}>

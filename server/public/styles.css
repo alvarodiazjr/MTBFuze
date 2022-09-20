@@ -61,6 +61,7 @@ header {
 .log-wrapper {
   border: 2px solid black;
   background-color: white;
+  border-radius: 5px;
 }
 
 .success-message {
@@ -157,7 +158,7 @@ input[type="file"] {
 
 .content {
   width: 100%;
-  font-size: 2rem;
+  font-size: 1.5rem;
   cursor: pointer;
 }
 
@@ -166,11 +167,16 @@ input[type="file"] {
 }
 
 .log-photo-wrapper img {
-  padding: 1rem;
   object-fit: cover;
   border-radius: 5px;
   width: 100%;
   height: 500px;
+  border: 2px solid black;
+}
+
+.log-photo-wrapper,
+.log-text {
+  padding: 0.5rem;
 }
 
 .locations {

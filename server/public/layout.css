@@ -55,6 +55,6 @@
   .profile-content,
   .log-content {
     flex-basis: 50%;
-    margin: 1rem;
+    margin: 0.5rem;
   }
 }

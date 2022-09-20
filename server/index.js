@@ -19,10 +19,6 @@ app.use(express.json());
 
 app.use(staticMiddleware);
 
-app.get('/api/hello', (req, res) => {
-  res.json({ hello: 'world' });
-});
-
 app.get('/api/users', (req, res, next) => {
   const sql = `
     select *
