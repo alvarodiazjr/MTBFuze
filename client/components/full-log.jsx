@@ -7,7 +7,7 @@ export default class FullLog extends React.Component {
   }
 
   componentDidMount() {
-    fetch(`/api/ridelog/${this.props.logId}`)
+    fetch(`/api/ridelogs/${this.props.logId}`)
       .then(res => res.json())
       .then(rideLog => this.setState({ rideLog }))
       .catch(err => console.error(err));

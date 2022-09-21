@@ -26,7 +26,7 @@ export default class ProfilePage extends React.Component {
         this.setState({ rideLogs: result });
       })
       .catch(err => console.error(err));
-    fetch('/api/getbikes')
+    fetch('/api/bikes')
       .then(res => res.json())
       .then(result => {
         this.setState({ bikeInfo: result });

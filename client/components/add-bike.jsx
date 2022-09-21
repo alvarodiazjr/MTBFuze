@@ -23,7 +23,7 @@ export default class AddBikeForm extends React.Component {
       model: this.state.model,
       year: this.state.year
     };
-    fetch('/api/addbike', {
+    fetch('/api/bikes', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newBike)

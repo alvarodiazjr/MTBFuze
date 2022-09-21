@@ -82,7 +82,7 @@ app.get('/api/coords', (req, res, next) => {
     .catch(err => next(err));
 });
 
-app.get('/api/ridelog/:logId', (req, res, next) => {
+app.get('/api/ridelogs/:logId', (req, res, next) => {
   const logId = Number(req.params.logId);
   if (!logId) {
     throw new ClientError(400, 'productId must be a positive integer');
@@ -107,7 +107,7 @@ app.get('/api/ridelog/:logId', (req, res, next) => {
     .catch(err => next(err));
 });
 
-app.post('/api/addbike', (req, res, next) => {
+app.post('/api/bikes', (req, res, next) => {
   const { make, model, year } = req.body;
   if (!make || !model || !year) {
     throw new ClientError(400, 'Missing Fields');
@@ -127,7 +127,8 @@ app.post('/api/addbike', (req, res, next) => {
     .catch(err => next(err));
 });
 
-app.get('/api/getbikes', (req, res, next) => {
+// remember to change the url in the fetch requests also
+app.get('/api/bikes', (req, res, next) => {
   const sql = `
     select "bikeId",
            "make",
