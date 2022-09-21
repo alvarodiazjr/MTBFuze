@@ -54,6 +54,7 @@ export default class AddBikeForm extends React.Component {
                   type="text"
                   name="make"
                   id="make"
+                  value={this.state.make}
                   className="text-box"
                   placeholder="ex. Giant"
                   onChange={this.handleChange} />
@@ -69,6 +70,7 @@ export default class AddBikeForm extends React.Component {
                   type="text"
                   name="model"
                   id="model"
+                  value={this.state.model}
                   className="text-box"
                   placeholder="ex. Model"
                   onChange={this.handleChange} />
@@ -84,6 +86,7 @@ export default class AddBikeForm extends React.Component {
                   type="text"
                   name="year"
                   id="year"
+                  value={this.state.year}
                   className="text-box"
                   placeholder="ex. 2022"
                   onChange={this.handleChange} />

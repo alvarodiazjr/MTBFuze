@@ -16,7 +16,8 @@ header {
   color: black;
 }
 
-.nav-text {
+.nav-text,
+.home-text {
   text-decoration: none;
   cursor: pointer;
   color: white;
@@ -27,15 +28,25 @@ header {
     -1px -1px 0 #000;
 }
 
+.home-text {
+  margin-bottom: 0;
+  color: #6e9a8f;
+}
+
 .mtb-logo {
   display: flex;
   flex-wrap: nowrap;
 }
 
-.mtb-image {
+.mtb-image,
+.home-mtb {
   height: fit-content;
   width: 60px;
   transform: rotate(0.9turn);
+}
+
+.home-mtb {
+  width: 100px;
 }
 
 .profile-icon {
@@ -51,7 +62,8 @@ header {
 
 .create-log-wrapper,
 .success-message,
-.bike-form-wrapper {
+.bike-form-wrapper,
+.auth-form-wrapper {
   margin: 0 0.5rem;
   padding: 0.5rem;
   background-color: #ddd;
@@ -59,7 +71,8 @@ header {
   border-radius: 0.25rem;
 }
 
-.bike-form-wrapper {
+.bike-form-wrapper,
+.auth-form-wrapper {
   padding-bottom: 2rem;
 }
 
@@ -116,10 +129,11 @@ input[type="file"] {
 }
 
 .text-box,
-.location-search-input {
+.location-search-input,
+.auth-text-box {
   cursor: pointer;
   padding: 5px;
-  height: 1.5rem;
+  height: 2rem;
   width: 100%;
   border: 1.5px solid black;
   border-radius: 0.25rem;
@@ -138,9 +152,14 @@ input[type="file"] {
   font-size: inherit;
 }
 
-.log-anchor {
+.log-anchor,
+.auth-anchor {
   cursor: pointer;
   color: #000;
+}
+
+.auth-anchor {
+  font-size: 20px;
 }
 
 .accordion {
@@ -192,4 +211,13 @@ input[type="file"] {
 
 .content:hover {
   background-color: #ddd;
+}
+
+.home-buttons,
+.auth-wrapper {
+  margin: 2rem;
+}
+
+.auth-input {
+  font-size: 1.5rem;
 }

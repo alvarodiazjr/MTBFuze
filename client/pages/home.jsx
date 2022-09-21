@@ -6,6 +6,8 @@ import ProfilePage from './profile-page';
 import CreateLogForm from '../components/create-log-form';
 import FullLog from '../components/full-log';
 import AddBikeForm from '../components/add-bike';
+import HomePage from './home-page';
+import AuthForm from '../components/auth-form';
 
 export default class Home extends React.Component {
   constructor(props) {
@@ -40,6 +42,12 @@ export default class Home extends React.Component {
     }
     if (path === 'addbike') {
       return <AddBikeForm />;
+    }
+    if (path === 'homescreen') {
+      return <HomePage />;
+    }
+    if (path === 'sign-up') {
+      return <AuthForm />;
     }
   }
 

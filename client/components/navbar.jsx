@@ -12,7 +12,9 @@ export default class Navbar extends React.Component {
             <img className='mtb-image' src="./images/image-1663262324156.png" alt="mtb" />
           </div>
           <div className='column-half text-right'>
-            <i className='fa-solid fa-user profile-icon'></i>
+            <a href="#homescreen">
+              <i className='fa-solid fa-user profile-icon'></i>
+            </a>
           </div>
         </div>
       </header>
