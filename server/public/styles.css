@@ -50,12 +50,17 @@ header {
 }
 
 .create-log-wrapper,
-.success-message {
-  margin: 0 2rem;
+.success-message,
+.bike-form-wrapper {
+  margin: 0 0.5rem;
   padding: 0.5rem;
   background-color: #ddd;
   border: 1.5px solid black;
   border-radius: 0.25rem;
+}
+
+.bike-form-wrapper {
+  padding-bottom: 2rem;
 }
 
 .log-wrapper {
@@ -99,7 +104,7 @@ input[type="file"] {
   border-radius: 0.25rem;
   width: 100%;
   background-color: white;
-  color: gray;
+  color: black;
 }
 
 ::-webkit-file-upload-button {
@@ -121,7 +126,7 @@ input[type="file"] {
 }
 
 .date {
-  color: gray;
+  color: black;
 }
 
 #caption {
@@ -179,7 +184,8 @@ input[type="file"] {
   padding: 0.5rem;
 }
 
-.locations {
+.locations,
+.add-bike {
   text-decoration: none;
   color: black;
 }

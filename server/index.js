@@ -127,6 +127,21 @@ app.post('/api/addbike', (req, res, next) => {
     .catch(err => next(err));
 });
 
+app.get('/api/getbikes', (req, res, next) => {
+  const sql = `
+    select "bikeId",
+           "make",
+           "model",
+           "year"
+      from "bikeInfo"
+  `;
+  db.query(sql)
+    .then(result => {
+      res.json(result.rows);
+    })
+    .catch(err => next(err));
+});
+
 app.use(errorMiddleware);
 
 app.listen(process.env.PORT, () => {
