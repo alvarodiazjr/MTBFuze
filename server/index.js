@@ -82,7 +82,7 @@ app.get('/api/coords', (req, res, next) => {
     .catch(err => next(err));
 });
 
-app.get('/api/ridelog/:logId', (req, res, next) => {
+app.get('/api/ridelogs/:logId', (req, res, next) => {
   const logId = Number(req.params.logId);
   if (!logId) {
     throw new ClientError(400, 'productId must be a positive integer');
@@ -103,6 +103,42 @@ app.get('/api/ridelog/:logId', (req, res, next) => {
         throw new ClientError(404, `cannot find ride with logId ${logId}`);
       }
       res.json(result.rows[0]);
+    })
+    .catch(err => next(err));
+});
+
+app.post('/api/bikes', (req, res, next) => {
+  const { make, model, year } = req.body;
+  if (!make || !model || !year) {
+    throw new ClientError(400, 'Missing Fields');
+  }
+  const userId = '1';
+  const sql = `
+    insert into "bikeInfo" ("userId", "make", "model", "year")
+    values ($1, $2, $3, $4)
+    returning *
+  `;
+  const params = [userId, make, model, year];
+  db.query(sql, params)
+    .then(result => {
+      const [log] = result.rows;
+      res.status(201).json(log);
+    })
+    .catch(err => next(err));
+});
+
+// remember to change the url in the fetch requests also
+app.get('/api/bikes', (req, res, next) => {
+  const sql = `
+    select "bikeId",
+           "make",
+           "model",
+           "year"
+      from "bikeInfo"
+  `;
+  db.query(sql)
+    .then(result => {
+      res.json(result.rows);
     })
     .catch(err => next(err));
 });

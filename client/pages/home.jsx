@@ -5,6 +5,7 @@ import parseRoute from '../lib/parse-route';
 import ProfilePage from './profile-page';
 import CreateLogForm from '../components/create-log-form';
 import FullLog from '../components/full-log';
+import AddBikeForm from '../components/add-bike';
 
 export default class Home extends React.Component {
   constructor(props) {
@@ -27,8 +28,8 @@ export default class Home extends React.Component {
     if (path === 'createlog' || path === '') {
       return <CreateLogForm />;
     }
-    if (path === 'logsuccess') {
-      return <LogSuccesful />;
+    if (path === 'logsuccess' || path === 'bikesuccess') {
+      return <LogSuccesful action={path} />;
     }
     if (path === 'profile') {
       return <ProfilePage />;
@@ -36,6 +37,9 @@ export default class Home extends React.Component {
     if (path === 'fulllog') {
       const logId = this.state.route.params.get('logId');
       return <FullLog logId={logId} />;
+    }
+    if (path === 'addbike') {
+      return <AddBikeForm />;
     }
   }
 

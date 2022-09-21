@@ -7,6 +7,7 @@ export default class ProfilePage extends React.Component {
     this.state = {
       latLng: [],
       rideLogs: [],
+      bikeInfo: [],
       isClicked: null
     };
     this.tabClick = this.tabClick.bind(this);
@@ -23,6 +24,12 @@ export default class ProfilePage extends React.Component {
       .then(res => res.json())
       .then(result => {
         this.setState({ rideLogs: result });
+      })
+      .catch(err => console.error(err));
+    fetch('/api/bikes')
+      .then(res => res.json())
+      .then(result => {
+        this.setState({ bikeInfo: result });
       })
       .catch(err => console.error(err));
   }
@@ -54,18 +61,26 @@ export default class ProfilePage extends React.Component {
         <div className='profile-page'>
           <div className='profile-content'>
             <div onClick={this.tabClick} id='bikes' className="blocks header">My Bikes</div>
+            {
+              this.state.bikeInfo.map(bikeInfo => {
+                const bikeDisplay = this.state.isClicked === 'bikes'
+                  ? 'visible'
+                  : 'hidden';
+                return (
+                  <div className='locations' key={bikeInfo.bikeId}>
+                    <div className={`blocks content ${bikeDisplay}`}>
+                      {bikeInfo.year} {bikeInfo.make} {bikeInfo.model}
+                    </div>
+                  </div>
+                );
+              })
+            }
             <div onClick={this.tabClick} id='rides' className="blocks header">My Rides</div>
             {
               this.state.rideLogs.map(rideLogs => {
-                let display = '';
-                if (this.state.isClicked === 'rides') {
-                  display += 'visible';
-                } else {
-                  display += 'hidden';
-                }
                 return (
                   <div key={rideLogs.logId}>
-                    <FullLog rideLogs={rideLogs} display={display}/>
+                    <FullLog rideLogs={rideLogs} display={this.state.isClicked}/>
                   </div>
                 );
               })
@@ -96,9 +111,12 @@ export default class ProfilePage extends React.Component {
 function FullLog(props) {
   const { logId, location } = props.rideLogs;
   const display = props.display;
+  const rideDisplay = display === 'rides'
+    ? 'visible'
+    : 'hidden';
   return (
     <a className='locations' key={logId} href={`#fulllog?logId=${logId}`}>
-      <div className={`blocks content ${display}`}>{location}</div>
+      <div className={`blocks content ${rideDisplay}`}>{location}</div>
     </a>
   );
 }
