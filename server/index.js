@@ -154,7 +154,7 @@ app.post('/api/users/sign-up', (req, res, next) => {
       const sql = `
         insert into "users" ("username", "hashedPassword")
         values ($1, $2)
-        returning *
+        returning "userId", "username", "joinedAt"
       `;
       const params = [username, hashedPassword];
       return db.query(sql, params);
