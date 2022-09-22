@@ -127,6 +127,7 @@ app.get('/api/ridelogs/:logId', (req, res, next) => {
 });
 
 app.get('/api/ridelogs', (req, res, next) => {
+  const { userId } = req.user;
   const sql = `
     select "logId",
            "photoUrl",
@@ -134,8 +135,10 @@ app.get('/api/ridelogs', (req, res, next) => {
            "caption",
            "visitedOn"
       from "rideLogs"
+    where "userId" = $1
   `;
-  db.query(sql)
+  const params = [userId];
+  db.query(sql, params)
     .then(result => {
       res.json(result.rows);
     })
@@ -143,13 +146,16 @@ app.get('/api/ridelogs', (req, res, next) => {
 });
 
 app.get('/api/coords', (req, res, next) => {
+  const { userId } = req.user;
   const sql = `
     select "lat",
            "lng",
            "logId"
       from "rideLogs"
+    where "userId" = $1
   `;
-  db.query(sql)
+  const params = [userId];
+  db.query(sql, params)
     .then(result => {
       res.json(result.rows);
     })
@@ -177,14 +183,17 @@ app.post('/api/bikes', (req, res, next) => {
 });
 
 app.get('/api/bikes', (req, res, next) => {
+  const { userId } = req.user;
   const sql = `
     select "bikeId",
            "make",
            "model",
            "year"
       from "bikeInfo"
+    where "userId" = $1
   `;
-  db.query(sql)
+  const params = [userId];
+  db.query(sql, params)
     .then(result => {
       res.json(result.rows);
     })

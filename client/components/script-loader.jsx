@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLoadScript } from '@react-google-maps/api';
-import Home from '../pages/home';
+import App from '../app';
 
 const libraries = ['places'];
 
@@ -14,6 +14,6 @@ export default function Script() {
   if (!isLoaded) {
     return <div>...loading</div>;
   } else {
-    return <Home />;
+    return <App />;
   }
 }
