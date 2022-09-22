@@ -1,5 +1,7 @@
 import React from 'react';
 import { GoogleMap, Marker } from '@react-google-maps/api';
+import AppContext from '../lib/app-context';
+import Redirect from '../components/redirect';
 
 export default class ProfilePage extends React.Component {
   constructor(props) {
@@ -14,19 +16,28 @@ export default class ProfilePage extends React.Component {
   }
 
   componentDidMount() {
-    fetch('/api/coords')
+    if (!this.context.user) return <Redirect to='homescreen' />;
+
+    const token = window.localStorage.getItem('user-jwt');
+    const req = {
+      headers: {
+        'X-Access-Token': token
+      }
+    };
+
+    fetch('/api/coords', req)
       .then(res => res.json())
       .then(result => {
         this.setState({ latLng: result });
       })
       .catch(err => console.error(err));
-    fetch('/api/ridelogs')
+    fetch('/api/ridelogs', req)
       .then(res => res.json())
       .then(result => {
         this.setState({ rideLogs: result });
       })
       .catch(err => console.error(err));
-    fetch('/api/bikes')
+    fetch('/api/bikes', req)
       .then(res => res.json())
       .then(result => {
         this.setState({ bikeInfo: result });
@@ -44,6 +55,10 @@ export default class ProfilePage extends React.Component {
   }
 
   render() {
+    if (!this.context.user) return <Redirect to='homescreen' />;
+
+    const { username } = this.context.user;
+
     const containerStyle = {
       width: '100%',
       height: '400px',
@@ -57,7 +72,7 @@ export default class ProfilePage extends React.Component {
 
     return (
       <div className="container">
-        <h1 className='profile-content'>alvarodiazjr</h1>
+        <h1 className='profile-content'>{ username }</h1>
         <div className='profile-page'>
           <div className='profile-content'>
             <div onClick={this.tabClick} id='bikes' className="blocks header">My Bikes</div>
@@ -120,3 +135,5 @@ function FullLog(props) {
     </a>
   );
 }
+
+ProfilePage.contextType = AppContext;

@@ -32,8 +32,14 @@ class CreateLogForm extends React.Component {
     formData.append('image', this.fileInputRef.current.files[0]);
     formData.append('lat', this.state.lat);
     formData.append('lng', this.state.lng);
+
+    const token = window.localStorage.getItem('user-jwt');
+
     const req = {
       method: 'POST',
+      headers: {
+        'X-Access-Token': token
+      },
       body: formData
     };
     fetch('/api/ridelogs', req)

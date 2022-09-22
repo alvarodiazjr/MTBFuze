@@ -23,9 +23,15 @@ export default class AddBikeForm extends React.Component {
       model: this.state.model,
       year: this.state.year
     };
+
+    const token = window.localStorage.getItem('user-jwt');
+
     fetch('/api/bikes', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Access-Token': token
+      },
       body: JSON.stringify(newBike)
     })
       .then(res => res.json())

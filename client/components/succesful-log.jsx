@@ -1,17 +1,19 @@
 import React from 'react';
+import AppContext from '../lib/app-context';
 
 export default class LogSuccesful extends React.Component {
   render() {
-    const { action } = this.props;
-    const heading = action === 'logsuccess'
+    const { path } = this.context.route;
+
+    const heading = path === 'logsuccess'
       ? 'Log Created Successfully'
       : 'Bike Saved to Profile';
 
-    const anchorText = action === 'logsuccess'
+    const anchorText = path === 'logsuccess'
       ? 'Create Another'
       : 'Add Another';
 
-    const anchorHref = action === 'logsuccess'
+    const anchorHref = path === 'logsuccess'
       ? '#createlog'
       : '#addbike';
 
@@ -34,3 +36,5 @@ export default class LogSuccesful extends React.Component {
     );
   }
 }
+
+LogSuccesful.contextType = AppContext;

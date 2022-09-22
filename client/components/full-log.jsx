@@ -7,7 +7,14 @@ export default class FullLog extends React.Component {
   }
 
   componentDidMount() {
-    fetch(`/api/ridelogs/${this.props.logId}`)
+    const token = window.localStorage.getItem('user-jwt');
+    const req = {
+      headers: {
+        'X-Access-Token': token
+      }
+    };
+
+    fetch(`/api/ridelogs/${this.props.logId}`, req)
       .then(res => res.json())
       .then(rideLog => this.setState({ rideLog }))
       .catch(err => console.error(err));
