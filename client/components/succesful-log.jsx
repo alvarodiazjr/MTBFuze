@@ -7,15 +7,17 @@ export default class LogSuccesful extends React.Component {
 
     const heading = path === 'logsuccess'
       ? 'Log Created Successfully'
-      : 'Bike Saved to Profile';
+      : path === 'bikesuccess'
+        ? 'Bike Saved to Profile'
+        : 'Log Deleted Successfully';
 
-    const anchorText = path === 'logsuccess'
-      ? 'Create Another'
-      : 'Add Another';
+    const anchorText = path === 'bikesuccess'
+      ? 'Add Another'
+      : 'Create Another';
 
-    const anchorHref = path === 'logsuccess'
-      ? '#createlog'
-      : '#addbike';
+    const anchorHref = path === 'bikesuccess'
+      ? '#addbike'
+      : '#createlog';
 
     return (
       <div className='container'>

@@ -94,7 +94,6 @@ header {
 
 .submit-button,
 .view-logs-btn,
-.delete-button,
 .edit-button {
   margin-top: 2rem;
   width: 6.5rem;
@@ -232,8 +231,11 @@ input[type="file"] {
 
 .delete-button {
   background-color: red;
+  border: 1.5px solid black;
+  border-radius: 5px;
   color: white;
   padding: 0.5rem;
+  font-size: 18px;
 }
 
 .content:hover {

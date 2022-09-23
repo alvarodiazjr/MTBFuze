@@ -116,9 +116,9 @@ app.delete('/api/ridelogs/:logId', (req, res, next) => {
   const params = [logId, userId];
   db.query(sql, params)
     .then(result => {
-      const rideLog = result.rows[0];
+      const [rideLog] = result.rows;
       if (!rideLog) {
-        throw new ClientError(404, `cannot find bike with RideLogId of ${logId}`);
+        throw new ClientError(404, `Cannot find RideLog with id ${logId}`);
       } else {
         res.sendStatus(204);
       }

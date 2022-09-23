@@ -9,6 +9,7 @@ export default class FullLog extends React.Component {
     };
     this.clickIcon = this.clickIcon.bind(this);
     this.clickLink = this.clickLink.bind(this);
+    this.clickDelete = this.clickDelete.bind(this);
   }
 
   componentDidMount() {
@@ -31,6 +32,23 @@ export default class FullLog extends React.Component {
 
   clickLink() {
     this.setState({ modalOpened: false });
+  }
+
+  clickDelete(event) {
+    event.preventDefault();
+    const token = window.localStorage.getItem('user-jwt');
+    const req = {
+      method: 'DELETE',
+      headers: { 'X-Access-Token': token },
+      body: JSON.stringify(this.state.rideLog)
+    };
+
+    fetch(`/api/ridelogs/${this.props.logId}`, req)
+      .then(result => {
+        window.location.hash = 'delete-successful';
+        this.setState({ rideLog: null });
+      })
+      .catch(err => console.error(err));
   }
 
   render() {
@@ -62,16 +80,16 @@ export default class FullLog extends React.Component {
             </div>
           </div>
         </div>
+
         <div className={`log-modal-menu text-center ${modal}`}>
           <div className='full-log-buttons'>
             <button onClick={this.clickLink} className='edit-button'>Edit Log</button>
           </div>
           <div className='full-log-buttons'>
-            <a href="#delete-modal" className='delete-button' onClick={this.clickLink}>
-              Delete Log
-            </a>
+            <button onClick={this.clickDelete} className='delete-button'>Delete Log</button>
           </div>
         </div>
+
         <div onClick={this.clickLink} className={`log-modal ${modal}`}></div>
       </div>
     );
