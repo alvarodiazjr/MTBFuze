@@ -1,4 +1,6 @@
 import React from 'react';
+import AppContext from '../lib/app-context';
+import Redirect from './redirect';
 
 export default class AddBikeForm extends React.Component {
   constructor(props) {
@@ -43,6 +45,8 @@ export default class AddBikeForm extends React.Component {
   }
 
   render() {
+    if (!this.context.user) return <Redirect to='sign-in' />;
+
     return (
       <form onSubmit={this.handleSubmit}>
         <div className="container">
@@ -107,3 +111,5 @@ export default class AddBikeForm extends React.Component {
     );
   }
 }
+
+AddBikeForm.contextType = AppContext;

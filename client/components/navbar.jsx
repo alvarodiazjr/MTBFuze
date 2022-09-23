@@ -25,7 +25,7 @@ export default class Navbar extends React.Component {
       <header className='navbar'>
         <div className='row container align-center'>
           <div className='column-half mtb-logo'>
-            <a href="#" className='nav-text'>
+            <a href="#homescreen" className='nav-text'>
               <h1>MTB</h1>
             </a>
             <img className='mtb-image' src="./images/image-1663262324156.png" alt="mtb" />
@@ -51,7 +51,7 @@ export default class Navbar extends React.Component {
                   onClick={this.clickLinks}
                   className='modal-links' >Add a Bike</a>
               </div>
-              <div className='sign-out-block'>
+              <div className='sign-out-block' onClick={this.clickLinks}>
                 <button onClick={ handleSignOut } className='sign-out-button'>Sign Out</button>
               </div>
             </div>

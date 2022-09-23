@@ -55,7 +55,7 @@ export default class ProfilePage extends React.Component {
   }
 
   render() {
-    if (!this.context.user) return <Redirect to='homescreen' />;
+    if (!this.context.user) return <Redirect to='sign-in' />;
 
     const { username } = this.context.user;
 

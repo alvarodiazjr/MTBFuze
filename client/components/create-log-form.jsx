@@ -3,6 +3,8 @@ import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng
 } from 'react-places-autocomplete';
+import AppContext from '../lib/app-context';
+import Redirect from './redirect';
 
 class CreateLogForm extends React.Component {
   constructor(props) {
@@ -70,6 +72,7 @@ class CreateLogForm extends React.Component {
   };
 
   render() {
+    if (!this.context.user) return <Redirect to='sign-in' />;
     return (
       <form onSubmit={this.addLog}>
         <div className='container'>
@@ -172,3 +175,5 @@ class CreateLogForm extends React.Component {
 }
 
 export default CreateLogForm;
+
+CreateLogForm.contextType = AppContext;
