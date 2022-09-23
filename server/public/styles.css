@@ -166,11 +166,27 @@ input[type="file"] {
   margin-top: 2rem;
 }
 
-.blocks {
+.blocks,
+.ad-blocks,
+.sign-out-block {
   font-size: 1.5rem;
   padding: 10px 15px;
   border: 1.5px solid black;
   border-radius: 5px;
+}
+
+.ad-blocks,
+.sign-out-block {
+  cursor: pointer;
+  border-radius: 0;
+}
+
+.sign-out-block {
+  background-color: #6e9a8f;
+}
+
+.ad-blocks:hover {
+  background-color: #ddd;
 }
 
 .header {
@@ -204,7 +220,8 @@ input[type="file"] {
 }
 
 .locations,
-.add-bike {
+.add-bike,
+.modal-links {
   text-decoration: none;
   color: black;
 }
@@ -220,4 +237,32 @@ input[type="file"] {
 
 .auth-input {
   font-size: 1.5rem;
+}
+
+.menu {
+  position: absolute;
+  border: solid;
+  width: 40%;
+  background-color: white;
+  z-index: 1;
+  top: 80px;
+  right: 0;
+  min-height: 100vh;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgb(0 0 0 / 50%);
+}
+
+.sign-out-button {
+  font-size: 1.5rem;
+  padding: 10px 15px;
+  border: none;
+  background-color: #6e9a8f;
 }
