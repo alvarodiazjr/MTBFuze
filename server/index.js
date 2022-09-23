@@ -101,10 +101,35 @@ app.post('/api/ridelogs', uploadsMiddleware, (req, res, next) => {
     .catch(err => next(err));
 });
 
+app.delete('/api/ridelogs/:logId', (req, res, next) => {
+  const { userId } = req.user;
+  const logId = Number(req.params.logId);
+  if (!logId) {
+    throw new ClientError(400, 'Missing LogId');
+  }
+  const sql = `
+    delete from "rideLogs"
+      where "logId" = $1
+      and "userId" = $2
+    returning *
+  `;
+  const params = [logId, userId];
+  db.query(sql, params)
+    .then(result => {
+      const rideLog = result.rows[0];
+      if (!rideLog) {
+        throw new ClientError(404, `cannot find bike with RideLogId of ${logId}`);
+      } else {
+        res.sendStatus(204);
+      }
+    })
+    .catch(err => next(err));
+});
+
 app.get('/api/ridelogs/:logId', (req, res, next) => {
   const logId = Number(req.params.logId);
   if (!logId) {
-    throw new ClientError(400, 'productId must be a positive integer');
+    throw new ClientError(400, 'Missing LogId');
   }
   const sql = `
     select "logId",
