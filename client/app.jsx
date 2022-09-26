@@ -56,7 +56,7 @@ export default class App extends React.Component {
     if (path === 'createlog' || path === '') {
       return <CreateLogForm />;
     }
-    if (path === 'logsuccess' || path === 'bikesuccess') {
+    if (path === 'logsuccess' || path === 'bikesuccess' || path === 'delete-successful') {
       return <LogSuccesful />;
     }
     if (path === 'fulllog') {

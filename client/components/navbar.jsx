@@ -26,7 +26,7 @@ export default class Navbar extends React.Component {
         <div className='row container align-center'>
           <div className='column-half mtb-logo'>
             <a href="#homescreen" className='nav-text'>
-              <h1>MTB</h1>
+              <h1>MTBFuze</h1>
             </a>
             <img className='mtb-image' src="./images/image-1663262324156.png" alt="mtb" />
           </div>

@@ -93,7 +93,8 @@ header {
 }
 
 .submit-button,
-.view-logs-btn {
+.view-logs-btn,
+.edit-button {
   margin-top: 2rem;
   width: 6.5rem;
   height: 2.5rem;
@@ -153,7 +154,8 @@ input[type="file"] {
 }
 
 .log-anchor,
-.auth-anchor {
+.auth-anchor,
+.edit-button {
   cursor: pointer;
   color: #000;
 }
@@ -221,9 +223,19 @@ input[type="file"] {
 
 .locations,
 .add-bike,
-.modal-links {
+.modal-links,
+.delete-button {
   text-decoration: none;
   color: black;
+}
+
+.delete-button {
+  background-color: red;
+  border: 1.5px solid black;
+  border-radius: 5px;
+  color: white;
+  padding: 0.5rem;
+  font-size: 18px;
 }
 
 .content:hover {
@@ -241,7 +253,6 @@ input[type="file"] {
 
 .menu {
   position: absolute;
-  border: solid;
   width: 40%;
   background-color: white;
   z-index: 1;
@@ -250,8 +261,9 @@ input[type="file"] {
   min-height: 100vh;
 }
 
-.modal {
-  position: fixed;
+.modal,
+.log-modal {
+  position: absolute;
   top: 0;
   bottom: 0;
   right: 0;
@@ -265,4 +277,38 @@ input[type="file"] {
   padding: 10px 15px;
   border: none;
   background-color: #6e9a8f;
+}
+
+.fa-pencil {
+  padding: 1rem;
+  font-size: 1.5rem;
+}
+
+.log-modal-menu,
+.delete-modal-menu {
+  background-color: white;
+  border: 2px solid black;
+  z-index: 1;
+  width: 40%;
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%);
+}
+
+.delete-modal-menu {
+  padding: 1rem;
+  width: 50%;
+}
+
+.full-log-buttons {
+  margin-bottom: 2rem;
+}
+
+.go-back {
+  font-size: 1.3rem;
+  color: black;
+  border: none;
+  background-color: white;
+  text-decoration: underline;
 }
