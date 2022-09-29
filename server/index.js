@@ -5,7 +5,6 @@ const errorMiddleware = require('./error-middleware');
 const ClientError = require('./client-error');
 const pg = require('pg');
 const uploadsMiddleware = require('./uploads-middleware');
-const path = require('path');
 const argon2 = require('argon2');
 const jwt = require('jsonwebtoken');
 const authorizationMiddleware = require('./authorization-middleware');
@@ -86,7 +85,7 @@ app.post('/api/ridelogs', uploadsMiddleware, (req, res, next) => {
   if (!location || !date || !caption) {
     throw new ClientError(400, 'Missing Fields');
   }
-  const photoUrl = path.join('/images', req.file.filename);
+  const photoUrl = req.file.location;
   const sql = `
     insert into "rideLogs" ("userId", "location", "visitedOn", "caption", "photoUrl", "lat", "lng")
     values ($1, $2, $3, $4, $5, $6, $7)

@@ -53,7 +53,7 @@ export default class App extends React.Component {
     if (path === 'profile') {
       return <ProfilePage />;
     }
-    if (path === 'createlog' || path === '') {
+    if (path === 'createlog') {
       return <CreateLogForm />;
     }
     if (path === 'logsuccess' || path === 'bikesuccess' || path === 'delete-successful') {
