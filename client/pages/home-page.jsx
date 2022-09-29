@@ -17,7 +17,7 @@ export default class HomePage extends React.Component {
     return (
       <div className="container text-center">
         <h1 className='home-text'>MTBFuze</h1>
-        <img src="./images/image-1663262324156.png" alt="mtb" className='home-mtb' />
+        <img src="./images/mountain-bike.png" alt="mtb" className='home-mtb' />
         <div className="row justify-center home-buttons">
           <a href="#sign-in" className="view-logs-btn">Sign In</a>
           <a href="#sign-up" className="view-logs-btn">Sign Up</a>
