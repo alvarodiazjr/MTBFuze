@@ -58,6 +58,7 @@ header {
   text-align: center;
   vertical-align: middle;
   border: 1.5px solid black;
+  cursor: pointer;
 }
 
 .create-log-wrapper,
@@ -96,13 +97,13 @@ header {
 .view-logs-btn,
 .edit-button {
   margin-top: 2rem;
-  width: 6.5rem;
-  height: 2.5rem;
   background-color: #6e9a8f;
   color: white;
   border: 1.5px solid black;
   border-radius: 0.25rem;
-  font-size: 20px;
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  cursor: pointer;
 }
 
 .view-logs-btn {
@@ -235,7 +236,8 @@ input[type="file"] {
   border-radius: 5px;
   color: white;
   padding: 0.5rem;
-  font-size: 18px;
+  font-size: 1.5rem;
+  cursor: pointer;
 }
 
 .content:hover {
@@ -263,12 +265,11 @@ input[type="file"] {
 
 .modal,
 .log-modal {
-  position: absolute;
+  position: fixed;
   top: 0;
-  bottom: 0;
-  right: 0;
   left: 0;
   width: 100%;
+  height: 100%;
   background-color: rgb(0 0 0 / 50%);
 }
 
@@ -289,7 +290,7 @@ input[type="file"] {
   background-color: white;
   border: 2px solid black;
   z-index: 1;
-  width: 40%;
+  width: 50%;
   position: absolute;
   left: 50%;
   top: 40%;
@@ -298,7 +299,7 @@ input[type="file"] {
 
 .delete-modal-menu {
   padding: 1rem;
-  width: 50%;
+  width: 70%;
 }
 
 .full-log-buttons {
@@ -311,4 +312,5 @@ input[type="file"] {
   border: none;
   background-color: white;
   text-decoration: underline;
+  cursor: pointer;
 }
