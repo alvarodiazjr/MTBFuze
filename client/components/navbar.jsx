@@ -28,7 +28,7 @@ export default class Navbar extends React.Component {
             <a href="#homescreen" className='nav-text'>
               <h1>MTBFuze</h1>
             </a>
-            <img className='mtb-image' src="./images/image-1663262324156.png" alt="mtb" />
+            <img className='mtb-image' src="./images/mountain-bike.png" alt="mtb" />
           </div>
           <div className='column-half text-right'>
             <i onClick={this.clickIcon} className='fa-solid fa-user profile-icon'></i>
