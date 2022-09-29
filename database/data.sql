@@ -1,2 +1,2 @@
 insert into "users" ("username", "hashedPassword")
-values ('alvarodiazjr', 'password1');
+values ('alvarodiaz', 'password1');
