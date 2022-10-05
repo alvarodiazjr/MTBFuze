@@ -18,6 +18,8 @@ export default class ProfilePage extends React.Component {
   componentDidMount() {
     if (!this.context.user) return <Redirect to='homescreen' />;
 
+    this.context.isLoading(true);
+
     const token = window.localStorage.getItem('user-jwt');
     const req = {
       headers: {
@@ -29,18 +31,21 @@ export default class ProfilePage extends React.Component {
       .then(res => res.json())
       .then(result => {
         this.setState({ latLng: result });
+        this.context.isLoading(false);
       })
       .catch(err => console.error(err));
     fetch('/api/ridelogs', req)
       .then(res => res.json())
       .then(result => {
         this.setState({ rideLogs: result });
+        this.context.isLoading(false);
       })
       .catch(err => console.error(err));
     fetch('/api/bikes', req)
       .then(res => res.json())
       .then(result => {
         this.setState({ bikeInfo: result });
+        this.context.isLoading(false);
       })
       .catch(err => console.error(err));
   }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useLoadScript } from '@react-google-maps/api';
 import App from '../app';
+import LoadingSpinner from '../pages/loading-spinner';
 
 const libraries = ['places'];
 
@@ -12,7 +13,7 @@ export default function Script() {
   });
 
   if (!isLoaded) {
-    return <div>...loading</div>;
+    return <LoadingSpinner />;
   } else {
     return <App />;
   }

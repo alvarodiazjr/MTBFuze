@@ -1,4 +1,5 @@
 import React from 'react';
+import AppContext from '../lib/app-context';
 
 export default class FullLog extends React.Component {
   constructor(props) {
@@ -15,6 +16,7 @@ export default class FullLog extends React.Component {
   }
 
   componentDidMount() {
+    this.context.isLoading(true);
     const token = window.localStorage.getItem('user-jwt');
     const req = {
       headers: {
@@ -24,7 +26,10 @@ export default class FullLog extends React.Component {
 
     fetch(`/api/ridelogs/${this.props.logId}`, req)
       .then(res => res.json())
-      .then(rideLog => this.setState({ rideLog }))
+      .then(rideLog => {
+        this.setState({ rideLog });
+        this.context.isLoading(false);
+      })
       .catch(err => console.error(err));
   }
 
@@ -119,3 +124,5 @@ export default class FullLog extends React.Component {
     );
   }
 }
+
+FullLog.contextType = AppContext;

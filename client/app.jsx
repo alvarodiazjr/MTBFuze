@@ -10,6 +10,7 @@ import CreateLogForm from './components/create-log-form';
 import LogSuccesful from './components/succesful-log';
 import FullLog from './components/full-log';
 import AddBikeForm from './components/add-bike';
+import LoadingSpinner from './pages/loading-spinner';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -17,11 +18,13 @@ export default class App extends React.Component {
     this.state = {
       user: null,
       isAuthorizing: true,
-      route: parseRoute(window.location.hash)
+      route: parseRoute(window.location.hash),
+      isLoading: false
     };
     this.renderPage = this.renderPage.bind(this);
     this.handleSignIn = this.handleSignIn.bind(this);
     this.handleSignOut = this.handleSignOut.bind(this);
+    this.isLoading = this.isLoading.bind(this);
   }
 
   componentDidMount() {
@@ -43,6 +46,12 @@ export default class App extends React.Component {
   handleSignOut() {
     window.localStorage.removeItem('user-jwt');
     this.setState({ user: null });
+  }
+
+  isLoading(value) {
+    this.setState({
+      isLoading: value
+    });
   }
 
   renderPage() {
@@ -72,15 +81,23 @@ export default class App extends React.Component {
   render() {
     if (this.state.isAuthorizing) return null;
     const { user, route, token } = this.state;
-    const { handleSignIn, handleSignOut } = this;
-    const contextValue = { user, route, token, handleSignIn, handleSignOut };
-    return (
-      <AppContext.Provider value={contextValue}>
-        <>
-          <Navbar />
-          {this.renderPage()}
-        </>
-      </AppContext.Provider>
-    );
+    const { handleSignIn, handleSignOut, isLoading } = this;
+    const contextValue = { user, route, token, handleSignIn, handleSignOut, isLoading };
+    if (navigator.onLine === false) {
+      return <div className='error-message'>Sorry, there was an error connecting to the network! Please check your internet connection and try again.</div>;
+    } else {
+      return (
+        <AppContext.Provider value={contextValue}>
+          <>
+            <Navbar />
+            {this.state.isLoading
+              ? <LoadingSpinner visible='visible' />
+              : <LoadingSpinner visible='hidden' />
+            }
+            {this.renderPage()}
+          </>
+        </AppContext.Provider>
+      );
+    }
   }
 }
