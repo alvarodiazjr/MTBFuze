@@ -49,6 +49,12 @@ header {
   width: 100px;
 }
 
+.home-logo {
+  width: 50%;
+
+  /* padding: 2rem; */
+}
+
 .profile-icon {
   padding: 10px;
   background-color: white;
@@ -313,4 +319,32 @@ input[type="file"] {
   background-color: white;
   text-decoration: underline;
   cursor: pointer;
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-spinner {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  width: 50px;
+  height: 50px;
+  border: 10px solid #6e9a8f;
+  border-top: 10px solid #000;
+  border-radius: 50%;
+  animation: spinner 1.5s linear infinite;
+}
+
+.error-message {
+  margin: 4rem;
+  text-align: center;
+  font-size: 3rem;
 }
