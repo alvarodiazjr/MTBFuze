@@ -8,10 +8,7 @@ As a somewhat new Mountain Biker I've found a new passion for mountain biking an
 
 ## Live Link
 
-Try the application live at https://mtbfuze.alvarodiaz.net/ \
-Dummy User
-- Username - AlvaroDiazJr
-- Password - ad123
+Try the application live at https://mtbfuze.alvarodiaz.net/
 
 ## Technologies Used
 - HTML
